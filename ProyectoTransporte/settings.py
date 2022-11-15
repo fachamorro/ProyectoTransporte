@@ -74,10 +74,21 @@ WSGI_APPLICATION = 'ProyectoTransporte.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd97r8dj3vq0mpk',
+        'USER': 'wunlvmkaxwcnyb',
+        'PASSWORD': '5f243f31c8567ca263eb32a554b349c57e9ba550e563996e70351cf3c36c1c86',
+        'HOST': 'ec2-35-173-91-114.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
