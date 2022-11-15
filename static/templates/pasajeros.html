@@ -1,0 +1,118 @@
+{% extends "./base.html" %} {% block title %} PASAJE {% endblock %} 
+{% block body %}
+<center>
+  <article>
+    <p
+      class="animate__animated animate__pulse animate__infinite"
+      style="font-family: 'Comic Sans MS', sans-serif; font-size: 50px"
+    >
+      SITU
+    </p>
+    <br />
+  </article>
+</center>
+<div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong class="text-dark">{{message}}</strong>
+              </div>
+            {% endfor %}
+            {% endif %}
+            <div class="card">
+                <h2>Nuevo Pasajero</h2>
+                <form action="" method="POST" enctype ="multipart/form-data" >
+                    {% csrf_token %}
+                     {{form}}
+
+                    <!--<div class="form-group">
+                        <label>Cedula</label>
+                        <input type="text" id="cedula" name="cedula" class="form-control" placeholder="Ingrese Cedula" minlength="10" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese Nombre" minlength="2" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ingrese Apellido" minlength="2" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Ingrese telefono" minlength="9" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Ingrese Email" minlength="8" maxlength="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen</label>
+                        <input type="file" id="imagen" name="imagen" class="form-control" required>
+                    </div>-->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white" >Guardar</button>
+                    </div>
+    
+                </form>
+            </div>
+    </div>
+    <div class"col-sm-9 col-md-9 col-lg-9 col-xl-9">
+        <h1>Listado de Pasajeros</h1>
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-striped ">
+                    <thead class="text-center">
+                        <tr>
+                          <th>#</th>
+                          <th>Cedula</th>
+                          <th>Nombre</th>
+                          <th>Apellido</th>
+                          <th>Telefono</th>
+                          <th>Imagen</th>
+                          <th colspan="2">Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for e in pasajeros %}
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{e.cedula}}</td>
+                          <td>{{e.nombre}}</td>
+                          <td>{{e.apellido}}</td>
+                          <td>{{e.telefono}}</td>
+                          <td>
+                            {% load static %}
+                
+                            <img
+                              src="{% static e.imagen %}"
+                              alt="Imagen no encontrada"
+                              class="img-responsive"
+                              width="65"
+                              height="50"
+                            /><br />
+                          </td>
+                          <td>{{e.correo}}</td>
+                          <td>
+                            <a href="{% url 'pasajerosEdit' e.id %}" class="btn btn-primary"
+                              >Editar</a
+                            >
+                            <a href="{% url 'pasajerosEliminar' e.id %}" class="btn btn-danger"
+                              >Eliminar</a
+                            >
+                            <a href="{% url 'pasajerosView' e.id %}" class="btn btn-info"
+                              >Ver</a
+                            >
+                          </td>
+                      
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                      
+                </table>
+              </div>
+            </div>   
+    </div>
+  </div>
+{% endblock body %}

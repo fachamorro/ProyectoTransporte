@@ -1,0 +1,61 @@
+{% extends "./base.html" %}
+{% block title %}
+    Pasaje
+{% endblock %}
+
+{% block body %}
+<center>
+    <article>
+        <p class="animate__animated animate__pulse animate__infinite"
+        style="font-family: 'Comic Sans MS', sans-serif; font-size: 50px; ">SITU</p><br>
+    </article>        
+</center>
+<h2>Gestión de Pasajeros</h2>
+<div class="card">
+  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    <div class="card p-4">
+      <div
+        class="image d-flex flex-column justify-content-center align-items-center"
+      >
+        <button class="btn btn-secondary">
+            {% load static %}
+          <img src="{% static datos.imagen %}" height="100" width="100" />
+        </button>
+        <span class="name mt-3">{{datos.nombre}}  {{datos.apellido}}</span>
+        
+        <span class="idd"><strong>DUI: </strong> {{datos.cedula}}</span>
+        <div
+          class="d-flex flex-row justify-content-center align-items-center gap-2"
+        >
+          <span class="idd1"><strong>Email: </strong> {{datos.email}}</span>
+          
+        </div>
+
+        <div
+          class="d-flex flex-row justify-content-center align-items-center gap-2"
+        >
+          <span class="idd1"><strong>Telefono: </strong> {{datos.telefono}}</span>
+          
+        </div>
+     
+        <div class="d-flex mt-2">
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'pasajeros' %}"  class="btn btn-secondary">Regresar</a> 
+                </div>
+                <div class="col">
+                    <a href="{% url 'pasajerosEdit' datos.id %}"  class="btn btn-primary">Editar</a> 
+                </div>
+
+            </div>
+           
+        </div>
+      
+        <div class="px-2 rounded mt-4 date">
+          <span class="join"><strong>Hoy es: </strong>{% now "Y-m-d" %}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

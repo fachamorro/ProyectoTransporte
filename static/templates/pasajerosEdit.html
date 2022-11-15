@@ -1,0 +1,70 @@
+{% extends "./base.html" %}
+{% block title %}
+    Pasaje
+{% endblock %}
+
+{% block body %}
+<center>
+    <article>
+        <p class="animate__animated animate__pulse animate__infinite"
+        style="font-family: 'Comic Sans MS', sans-serif; font-size: 50px; ">SITU</p><br>
+    </article>        
+</center>
+<h2>Gestión de Pasajeros</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post" enctype ="multipart/form-data" >
+                    {% csrf_token %}
+                    <input type="hidden" id="id" name="id" class="form-control" value="{{pasajero.id}}" >
+                    <div class="form-group">
+                        <label>Cedula</label>
+                        <input type="text" id="cedula" name="cedula" class="form-control" value="{{pasajero.cedula}}" placeholder="Ingrese Cedula" minlength="10" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" value="{{pasajero.nombre}}" placeholder="Ingrese Nombre" minlength="2" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" id="apellido" name="apellido" class="form-control" value="{{pasajero.apellido}}" placeholder="Ingrese Apellido" minlength="2" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        <input type="text" id="telefono" name="telefono" class="form-control" value="{{pasajero.telefono}}" placeholder="Ingrese telefono" minlength="9" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" name="email" class="form-control" value="{{pasajero.email}}" placeholder="Ingrese Email" minlength="8" maxlength="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen</label>
+                        {% load static %}
+                
+                            <img
+                              src="{% static pasajero.imagen %}"
+                              alt="Imagen no encontrada"
+                              class="img-responsive"
+                              width="65"
+                              height="50"
+                            /><br />
+                        <input type="file" id="imagen" name="imagen" value="{{pasajero.imagen}}" class="form-control">
+                    </div> 
+                    <hr>
+                    <div class="d-flex justify-content-center">
+
+                        <div class="row">
+                            <div class="col">
+                                <a href="{% url 'pasajeros' %}"  class="btn btn-secondary">Regresar</a> 
+                            </div>
+                            <div class="col">
+                                <input type="submit" value="Guardar" class="btn btn-primary"> 
+                            </div>
+
+                        </div>
+
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock body %}
